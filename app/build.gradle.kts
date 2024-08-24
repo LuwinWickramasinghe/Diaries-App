@@ -77,8 +77,10 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
 
             // Firebase
+    implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.storage.ktx)
+    implementation(libs.firebase.analytics)
 
             // Room components
     implementation(libs.androidx.room.runtime)
