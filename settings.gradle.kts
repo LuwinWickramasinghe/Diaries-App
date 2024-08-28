@@ -22,6 +22,22 @@ dependencyResolutionManagement {
     }
 }
 
+pluginManagement {
+    buildscript {
+        repositories {
+            mavenCentral()
+            maven {
+                // r8 maven
+                url = uri("https://storage.googleapis.com/r8-releases/raw")
+            }
+        }
+        dependencies {
+            // r8 version
+            classpath("com.android.tools:r8:8.2.16-dev")
+        }
+    }
+}
+
 rootProject.name = "Diaries"
 include(":app")
  
