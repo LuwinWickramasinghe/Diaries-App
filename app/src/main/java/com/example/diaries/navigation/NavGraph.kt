@@ -7,6 +7,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.diaries.presentation.screens.auth.AuthenticationScreen
 import com.example.diaries.util.Constants.WRITE_SCREEN_ARGUMENT_KEY
 
 @Composable
@@ -22,7 +23,12 @@ fun SetupNavGraph(startDestination: String, navController: NavHostController) {
 
 fun NavGraphBuilder.authenticationRoute(){
     composable(route = Screen.Authentication.route){
+        AuthenticationScreen(
+            loadingState = false,
+            onButtonClicked = {
 
+            }
+        )
     }
 }
 
