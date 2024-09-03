@@ -19,6 +19,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.diaries.presentation.screens.auth.AuthenticationScreen
 import com.example.diaries.presentation.screens.auth.AuthenticationViewModel
+import com.example.diaries.presentation.screens.home.HomeScreen
 import com.example.diaries.util.Constants.APP_ID
 import com.example.diaries.util.Constants.WRITE_SCREEN_ARGUMENT_KEY
 
@@ -39,7 +40,9 @@ fun SetupNavGraph(startDestination: String, navController: NavHostController) {
                 navController.navigate(Screen.Home.route)
             }
         )
-        homeRoute()
+        homeRoute(navigateToWrite = {
+            navController.navigate(Screen.Write.route)
+        })
         writeRoute()
     }
 }
@@ -89,22 +92,14 @@ fun NavGraphBuilder.authenticationRoute(
     }
 }
 
-fun NavGraphBuilder.homeRoute(){
+fun NavGraphBuilder.homeRoute(
+    navigateToWrite: () -> Unit
+){
     composable(route = Screen.Home.route){
-        val scope = rememberCoroutineScope()
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ){
-            Button(onClick = {
-                scope.launch ( Dispatchers.IO ) {
-                    App.create(APP_ID).currentUser?.logOut()
-                }
-            }) {
-                Text(text = "Logout")
-            }
-        }
+        HomeScreen(
+            onMenuClicked = {},
+            navigateToWrite = navigateToWrite
+        )
 
     }
 }
