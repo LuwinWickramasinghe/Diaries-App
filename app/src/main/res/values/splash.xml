@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Diaries.MySplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#F9F9FF</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.Diaries</item>
+
+    </style>
+</resources>

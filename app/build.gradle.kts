@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.jetbrains.kotlin.compose)
 //    id 'kotlin-kapt'
-    id("io.realm.kotlin") version "2.1.0"
+    id("io.realm.kotlin") version "2.0.0"
 }
 
 android {
@@ -77,8 +77,10 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
 
             // Firebase
+    implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.storage.ktx)
+    implementation(libs.firebase.analytics)
 
             // Room components
     implementation(libs.androidx.room.runtime)

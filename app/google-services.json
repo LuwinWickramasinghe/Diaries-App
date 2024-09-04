@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "535866187385",
+    "project_id": "diaries-cabe4",
+    "storage_bucket": "diaries-cabe4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:535866187385:android:25ec8a1ab3adba52127ea8",
+        "android_client_info": {
+          "package_name": "com.example.diaries"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMkMMHa4x46QNfyuT6K0gwCTV-5tfcQAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
