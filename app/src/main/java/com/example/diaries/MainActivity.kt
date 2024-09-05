@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
+import com.example.diaries.data.repository.MongoDB
 import com.example.diaries.navigation.Screen
 import com.example.diaries.navigation.SetupNavGraph
 import com.example.diaries.ui.theme.DiariesTheme

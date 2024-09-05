@@ -57,7 +57,7 @@ fun DiaryComponent(diary: Diary, onClick: (String) -> Unit) {
         interactionSource = remember {
             MutableInteractionSource()
         }
-    ) { onClick(diary.diary_id.toString()) }) {
+    ) { onClick(diary._id.toString()) }) {
         Spacer(modifier = Modifier.width(14.dp))
         Surface(
             modifier = Modifier
