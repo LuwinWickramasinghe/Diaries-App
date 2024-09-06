@@ -23,11 +23,12 @@ import androidx.compose.ui.unit.dp
 import com.example.diaries.model.Diary
 import com.example.diaries.presentation.components.DiaryComponent
 import java.time.LocalDate
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.calculateEndPadding
 import androidx.compose.foundation.layout.calculateStartPadding
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.ui.unit.LayoutDirection
+import java.util.Locale
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -62,12 +63,15 @@ fun HomeContent(
 
 @Composable
 fun DiarydateHeader(localDate: LocalDate){
-    Row(modifier = Modifier.padding(vertical = 14.dp)
-        .background(MaterialTheme.colorScheme.surface),
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(MaterialTheme.colorScheme.surface)
+            .padding(vertical = 14.dp),
         verticalAlignment = Alignment.CenterVertically) {
         Column(horizontalAlignment = Alignment.End) {
             Text(
-                text = String.format("%02d",localDate.dayOfMonth),
+                text = String.format(Locale.US,"%02d",localDate.dayOfMonth),
                 style = TextStyle(
                     fontSize = MaterialTheme.typography.titleLarge.fontSize,
                     fontWeight = FontWeight.Light
