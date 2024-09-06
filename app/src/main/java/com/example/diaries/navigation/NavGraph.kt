@@ -1,5 +1,6 @@
 package com.example.diaries.navigation
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -28,6 +29,7 @@ import com.example.diaries.presentation.components.DisplayAlertDialog
 import com.example.diaries.presentation.screens.auth.AuthenticationScreen
 import com.example.diaries.presentation.screens.auth.AuthenticationViewModel
 import com.example.diaries.presentation.screens.home.HomeScreen
+import com.example.diaries.presentation.screens.home.HomeViewModel
 import com.example.diaries.util.Constants.APP_ID
 import com.example.diaries.util.Constants.WRITE_SCREEN_ARGUMENT_KEY
 
@@ -110,13 +112,17 @@ fun NavGraphBuilder.homeRoute(
     navigateToAuth: () -> Unit
 ){
     composable(route = Screen.Home.route){
+        val viewModel: HomeViewModel = viewModel()
+        val diaries by viewModel.diaries
         val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
         var signOutDialogOpen by remember {
             mutableStateOf(false)
         }
         val scope = rememberCoroutineScope()
+        Log.d("ebug", diaries.toString())
 
         HomeScreen(
+            diaries= diaries,
             drawerState = drawerState,
             onMenuClicked = {
                 scope.launch {

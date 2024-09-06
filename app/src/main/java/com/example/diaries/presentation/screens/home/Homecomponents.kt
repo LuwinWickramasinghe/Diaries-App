@@ -3,6 +3,7 @@ package com.example.diaries.presentation.screens.home
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,27 +23,32 @@ import androidx.compose.ui.unit.dp
 import com.example.diaries.model.Diary
 import com.example.diaries.presentation.components.DiaryComponent
 import java.time.LocalDate
+import android.util.Log
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeContent(
+    paddingValues: PaddingValues,
     diaryNotes : Map<LocalDate, List<Diary>>,
     onClick: (String) -> Unit
 ){
     if(diaryNotes.isNotEmpty()){
-        LazyColumn (modifier = Modifier.padding(horizontal = 24.dp)){
+        LazyColumn (modifier = Modifier.padding(horizontal = 24.dp)
+            .padding(top = paddingValues.calculateTopPadding())){
             diaryNotes.forEach{(localDate, diaries) ->
                 stickyHeader (key = localDate){
                     DiarydateHeader(localDate = localDate)
                 }
-                items(items = diaries, key = {it._id}){
+                items(items = diaries, key = {it._id.toString()}){
                     DiaryComponent(diary = it, onClick =onClick)
                 }
             }
         }
 
     }else {
-        EmptyPage()
+        EmptyPage(
+            title = "On home content"
+        )
     }
 }
 
