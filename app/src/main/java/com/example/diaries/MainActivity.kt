@@ -15,9 +15,14 @@ import com.example.diaries.util.Constants.APP_ID
 import io.realm.kotlin.mongodb.App
 
 class MainActivity : ComponentActivity() {
+
+    var isSplashOn = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen()
+        installSplashScreen().setKeepOnScreenCondition{
+            isSplashOn
+        }
         WindowCompat.setDecorFitsSystemWindows(window, false)
         enableEdgeToEdge()
         setContent {
@@ -25,8 +30,10 @@ class MainActivity : ComponentActivity() {
                 val navController = rememberNavController()
                     SetupNavGraph(
                         startDestination = getStartDestination(),
-                        navController = navController )
-
+                        navController = navController ,
+                        onDataLoaded = {
+                            isSplashOn = false
+                        })
                 }
             }
         }
