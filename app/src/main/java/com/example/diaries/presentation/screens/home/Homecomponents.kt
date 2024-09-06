@@ -24,6 +24,10 @@ import com.example.diaries.model.Diary
 import com.example.diaries.presentation.components.DiaryComponent
 import java.time.LocalDate
 import android.util.Log
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.calculateEndPadding
+import androidx.compose.foundation.layout.calculateStartPadding
+import androidx.compose.ui.unit.LayoutDirection
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -33,8 +37,12 @@ fun HomeContent(
     onClick: (String) -> Unit
 ){
     if(diaryNotes.isNotEmpty()){
-        LazyColumn (modifier = Modifier.padding(horizontal = 24.dp)
-            .padding(top = paddingValues.calculateTopPadding())){
+        LazyColumn (modifier = Modifier
+            .padding(horizontal = 24.dp)
+            .padding(top = paddingValues.calculateTopPadding())
+            .padding(bottom = paddingValues.calculateBottomPadding())
+            .padding(start = paddingValues.calculateStartPadding(LayoutDirection.Ltr))
+            .padding(end = paddingValues.calculateEndPadding(LayoutDirection.Ltr))){
             diaryNotes.forEach{(localDate, diaries) ->
                 stickyHeader (key = localDate){
                     DiarydateHeader(localDate = localDate)
@@ -54,7 +62,9 @@ fun HomeContent(
 
 @Composable
 fun DiarydateHeader(localDate: LocalDate){
-    Row(verticalAlignment = Alignment.CenterVertically) {
+    Row(modifier = Modifier.padding(vertical = 14.dp)
+        .background(MaterialTheme.colorScheme.surface),
+        verticalAlignment = Alignment.CenterVertically) {
         Column(horizontalAlignment = Alignment.End) {
             Text(
                 text = String.format("%02d",localDate.dayOfMonth),
@@ -82,7 +92,7 @@ fun DiarydateHeader(localDate: LocalDate){
             )
             Text(
                 text = "${localDate.year}",
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = .40f),
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = .55f),
                 style = TextStyle(
                     fontSize = MaterialTheme.typography.bodySmall.fontSize,
                     fontWeight = FontWeight.Light
