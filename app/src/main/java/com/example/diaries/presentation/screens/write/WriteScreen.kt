@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun WriteScreen() {
+fun WriteScreen(onBackClicked: () -> Unit) {
     Scaffold(
         topBar = {
             WriteTopBar(onBackClicked = onBackClicked)

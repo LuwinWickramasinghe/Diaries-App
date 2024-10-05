@@ -185,7 +185,7 @@ fun NavGraphBuilder.homeRoute(
     }
 }
 
-fun NavGraphBuilder.writeRoute(){
+fun NavGraphBuilder.writeRoute(onBackClicked: () -> Unit){
     composable(
         route = Screen.Write.route,
         arguments = listOf(navArgument(name= WRITE_SCREEN_ARGUMENT_KEY){
