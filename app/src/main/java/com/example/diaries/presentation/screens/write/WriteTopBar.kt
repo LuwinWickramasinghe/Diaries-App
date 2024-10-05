@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -15,6 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -30,7 +30,8 @@ fun WriteTopBar(
                     style = TextStyle(
                         fontSize = MaterialTheme.typography.titleLarge.fontSize,
                         fontWeight = FontWeight.Bold
-                    )
+                    ),
+                    textAlign = TextAlign.Center
                 )
 
                 Text(
@@ -38,7 +39,9 @@ fun WriteTopBar(
                     text = "Date dd mm yyyy",
                     style = TextStyle(
                         fontSize = MaterialTheme.typography.titleLarge.fontSize
-                    )
+                    ),
+                    textAlign = TextAlign.Center
+
                 )
             }
         },
