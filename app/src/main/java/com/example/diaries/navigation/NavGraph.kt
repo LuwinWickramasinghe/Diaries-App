@@ -30,6 +30,7 @@ import com.example.diaries.presentation.screens.auth.AuthenticationScreen
 import com.example.diaries.presentation.screens.auth.AuthenticationViewModel
 import com.example.diaries.presentation.screens.home.HomeScreen
 import com.example.diaries.presentation.screens.home.HomeViewModel
+import com.example.diaries.presentation.screens.write.WriteScreen
 import com.example.diaries.util.Constants.APP_ID
 import com.example.diaries.util.Constants.WRITE_SCREEN_ARGUMENT_KEY
 import com.example.diaries.util.RequestState
@@ -67,7 +68,11 @@ fun SetupNavGraph(
             },
             onDataLoaded= onDataLoaded
         )
-        writeRoute()
+        writeRoute(
+            onBackClicked = {
+                navController.popBackStack()
+            }
+        )
     }
 }
 
@@ -189,6 +194,7 @@ fun NavGraphBuilder.writeRoute(){
             defaultValue = null
         })
     ){
+        WriteScreen(onBackClicked = onBackClicked)
 
     }
 }

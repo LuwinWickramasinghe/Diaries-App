@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 fun WriteScreen() {
     Scaffold(
         topBar = {
-
+            WriteTopBar(onBackClicked = onBackClicked)
         },
         content = {
 
