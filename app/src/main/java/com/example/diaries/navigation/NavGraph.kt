@@ -17,6 +17,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.diaries.data.repository.MongoDB
+import com.example.diaries.model.Diary
 import com.example.diaries.presentation.components.DisplayAlertDialog
 import com.example.diaries.presentation.screens.auth.AuthenticationScreen
 import com.example.diaries.presentation.screens.auth.AuthenticationViewModel
@@ -185,7 +186,14 @@ fun NavGraphBuilder.writeRoute(onBackClicked: () -> Unit){
             defaultValue = null
         })
     ){
-        WriteScreen(onBackClicked = onBackClicked)
+        WriteScreen(
+            selectedDiary = Diary().apply {
+                title = "Dummy title"
+                description = " dummy description"
+            },
+            onDeleteYes = {},
+            onBackClicked = onBackClicked
+        )
 
     }
 }
