@@ -74,7 +74,8 @@ fun WriteTopBar(
             IconButton(onClick = {}) {
                 Icon(
                     imageVector = Icons.Default.DateRange,
-                    contentDescription = "Date icon"
+                    contentDescription = "Date icon",
+                    tint = MaterialTheme.colorScheme.onSurface
                 )
             }
             if (selectedDiary != null) {

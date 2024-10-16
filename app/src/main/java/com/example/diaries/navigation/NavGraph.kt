@@ -1,5 +1,7 @@
 package com.example.diaries.navigation
 
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
@@ -18,6 +20,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.diaries.data.repository.MongoDB
 import com.example.diaries.model.Diary
+import com.example.diaries.model.Mood
 import com.example.diaries.presentation.components.DisplayAlertDialog
 import com.example.diaries.presentation.screens.auth.AuthenticationScreen
 import com.example.diaries.presentation.screens.auth.AuthenticationViewModel
@@ -177,7 +180,9 @@ fun NavGraphBuilder.homeRoute(
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 fun NavGraphBuilder.writeRoute(onBackClicked: () -> Unit){
+
     composable(
         route = Screen.Write.route,
         arguments = listOf(navArgument(name= WRITE_SCREEN_ARGUMENT_KEY){
@@ -186,13 +191,12 @@ fun NavGraphBuilder.writeRoute(onBackClicked: () -> Unit){
             defaultValue = null
         })
     ){
+        val pagerState = rememberPagerState(initialPage = 0, pageCount = {Mood.entries.size})
         WriteScreen(
-            selectedDiary = Diary().apply {
-                title = "Dummy title"
-                description = " dummy description"
-            },
+            selectedDiary = null,
             onDeleteYes = {},
-            onBackClicked = onBackClicked
+            onBackClicked = onBackClicked,
+            pagerState = pagerState
         )
 
     }
