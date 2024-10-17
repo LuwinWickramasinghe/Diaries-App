@@ -25,7 +25,14 @@ fun WriteScreen(
             )
         },
         content = {
-
+            WriteContent(
+                pagerState = pagerState,
+                title = "",
+                onTitleChanged = {},
+                description = "",
+                onDescriptionChanged = {},
+                paddingValues = it
+            )
         }
     )
 }
