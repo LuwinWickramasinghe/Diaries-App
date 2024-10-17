@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
@@ -22,6 +24,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -78,10 +81,41 @@ fun WriteContent(
                     focusedIndicatorColor = Color.Unspecified,
                     disabledIndicatorColor = Color.Unspecified,
                     unfocusedIndicatorColor = Color.Unspecified,
-                )
+                ),
+                keyboardOptions = KeyboardOptions(
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(
+                    onNext = {}
+                ),
+                maxLines = 1,
+                singleLine = true
 
             )
 
+            TextField(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                value = description,
+                onValueChange = onDescriptionChanged,
+                placeholder = { Text(text = "Telll me about it")},
+                colors = TextFieldDefaults.textFieldColors(
+                    containerColor = Color.Transparent,
+                    focusedIndicatorColor = Color.Unspecified,
+                    disabledIndicatorColor = Color.Unspecified,
+                    unfocusedIndicatorColor = Color.Unspecified,
+                ),
+                keyboardOptions = KeyboardOptions(
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions(
+                    onNext = {}
+                ),
+            )
         }
+
+        Column(
+
+        ) {  }
     }
 }
